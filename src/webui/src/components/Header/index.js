@@ -44,7 +44,7 @@ export default class Header extends React.Component {
 
   componentWillMount() {
     API.request('logo')
-    .then((response) => response.text().then((logo) => this.setState({logo})))
+    .then((logo) => this.setState({logo}))
     .catch((error) => {
       throw new Error(error);
     });
@@ -80,9 +80,9 @@ export default class Header extends React.Component {
     } catch (e) {
       const errorObj = {
         title: 'Unable to login',
-        type: 'error'
+        type: 'error',
+        description: e.error
       };
-      errorObj.description = e.message;
       this.setState({loginError: errorObj});
     }
   }

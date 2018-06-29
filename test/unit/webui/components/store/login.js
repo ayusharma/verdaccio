@@ -8,12 +8,8 @@ export default function(config) {
     const body = JSON.parse(config.body);
     if (body.username === 'sam' && body.password === '1234') {
         resolve({
-          json() {
-            return {
-              username: 'sam',
-              token: 'TEST_TOKEN'
-            }
-          }
+          username: 'sam',
+          token: 'TEST_TOKEN'
         });
     } else {
       reject({

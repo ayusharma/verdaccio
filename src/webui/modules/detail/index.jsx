@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Loading} from 'element-react';
 import isEmpty from 'lodash/isEmpty';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css'
 
 import PackageDetail from '../../components/PackageDetail';
 import NotFound from '../../components/NotFound';
@@ -32,6 +34,7 @@ export default class Detail extends React.Component {
 
   async componentDidMount() {
     await this.loadPackageInfo(this.packageName);
+    Prism.highlightAll();
   }
 
   async componentWillReceiveProps(newProps) {

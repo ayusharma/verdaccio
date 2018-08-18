@@ -41,6 +41,7 @@
       "unit-testing",
       "node-api"
     ],
-    "Guides": ["protect-your-dependencies"]
+    "Guides": ["protect-your-dependencies"],
+    "FAQ": ["frequently-asked-questions"]
   }
 }

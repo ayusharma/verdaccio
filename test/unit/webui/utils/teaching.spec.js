@@ -11,7 +11,7 @@ global.console.log = jest.fn();
 test('makeAPICall', (done) => {
     // const hello = (a, b, c) => {
     //     expect(a).toEqual({error: 'error'});
-    //     expect(b).toEqual();
+    //     expect(b).toEqua  l();
     //     expect(c).toEqual();
     //     done();
     // }

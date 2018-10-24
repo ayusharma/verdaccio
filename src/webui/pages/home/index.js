@@ -7,17 +7,29 @@ import PackageList from '../../components/PackageList';
 class Home extends Component {
   static propTypes = {
     children: PropTypes.element,
-    isUserLoggedIn: PropTypes.bool
+    isUserLoggedIn: PropTypes.bool,
+    packages: PropTypes.array,
+    filteredPackages: PropTypes.array,
   };
 
-  state = {
-    fistTime: true
+  constructor(props) {
+    super(props);
+    this.state = {
+      fistTime: true,
+      packages: props.packages,
+      filteredPackages: props.filteredPackages
+    };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.packages !== prevState.packages) {
       return {
         packages: nextProps.packages,
+      };
+    }
+    if (nextProps.filteredPackages !== prevState.filteredPackages) {
+      return {
+        filteredPackages: nextProps.filteredPackages,
       };
     }
     return null;
@@ -28,10 +40,14 @@ class Home extends Component {
   }
 
   render() {
-    const { packages } = this.state;
+    const { filteredPackages, packages } = this.state;
     return (
       <div className="container content">
-        <PackageList help={isEmpty(packages) === true} packages={packages} />
+        {filteredPackages.length > 0 && (
+          <div className="container content">
+            <PackageList help={isEmpty(packages) === true} packages={packages} />
+          </div>
+        )}
       </div>
     );
   }

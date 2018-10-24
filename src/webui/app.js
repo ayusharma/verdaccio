@@ -204,6 +204,17 @@ export default class App extends Component {
     });
   };
 
+  handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      const { filteredPackages, packages } = this.state;
+      const value = event.target.value.trim();
+      this.setState({
+        filteredPackages: value ? 
+        packages.filter(pkage => pkage.label.match(value)) : filteredPackages
+      });
+    }
+  }
+
   // eslint-disable-next-line no-unused-vars
   handleClickSearch = (_, { suggestionValue, method }) => {
     const { packages } = this.state;
@@ -255,6 +266,7 @@ export default class App extends Component {
         onSuggestionsFetch={this.handleFetchPackages}
         onCleanSuggestions={this.handlePackagesClearRequested}
         onClick={this.handleClickSearch}
+        onKeyDown={this.handleKeyDown}
         packages={searchPackages}
         search={search}
       />

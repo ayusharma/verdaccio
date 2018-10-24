@@ -323,7 +323,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoading, filteredPackages, ...others } = this.state;
+    const { isLoading, ...others } = this.state;
     return (
       <Container isLoading={isLoading}>
         {isLoading ? (
@@ -332,7 +332,7 @@ export default class App extends Component {
           <Fragment>
             {this.renderHeader()}
             <Content>
-              <Route {...others} packages={filteredPackages} />
+              <Route {...others} />
             </Content>
             <Footer />
           </Fragment>

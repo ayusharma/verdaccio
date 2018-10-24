@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { fontWeight } from '../../utils/styles/sizes';
 import { Wrapper, InputField } from './styles';
-import { IProps } from './interfaces';
+import { IProps } from './types';
 
 const renderInputComponent = (inputProps): Node => {
   const { ref, startAdornment, disableUnderline, onKeyDown, ...others } = inputProps;

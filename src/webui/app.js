@@ -155,7 +155,7 @@ export default class App extends Component {
 
   handleFetchPackages = async ({ value }) => {
     try {
-      this.req = await API.request(`/search/${value}`, 'GET');
+      this.req = await API.request(`/search/${encodeURIComponent(value)}`, 'GET');
       const transformedPackages = this.req.map(({ name, ...others}) => ({
         label: name,
         ...others

@@ -36,7 +36,7 @@ export default class App extends Component {
     packages: [],
     searchPackages: [],
     filteredPackages: [],
-    search: "",
+    search: '',
     isLoading: true,
     showAlertDialog: false,
     alertDialogContent: {
@@ -200,7 +200,7 @@ export default class App extends Component {
     this.setState({
       search: value,
       filteredPackages: value.length < search.length ? 
-        packages.filter(pkage => pkage.label.match(value)) : filteredPackages
+        packages.filter(pkg => pkg.label.match(value)) : filteredPackages
     });
   };
 
@@ -210,7 +210,7 @@ export default class App extends Component {
       const value = event.target.value.trim();
       this.setState({
         filteredPackages: value ? 
-        packages.filter(pkage => pkage.label.match(value)) : filteredPackages
+        packages.filter(pkg => pkg.label.match(value)) : filteredPackages
       });
     }
   }
@@ -224,7 +224,7 @@ export default class App extends Component {
       break;
       case 'enter':
         this.setState({
-          filteredPackages: packages.filter(pkage => pkage.label.match(suggestionValue))
+          filteredPackages: packages.filter(pkg => pkg.label.match(suggestionValue))
         });
       break;
     }

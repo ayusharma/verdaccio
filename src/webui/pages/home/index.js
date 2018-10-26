@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
 
 import PackageList from '../../components/PackageList';
 
@@ -35,19 +34,13 @@ class Home extends Component {
     return null;
   }
 
-  isTherePackages() {
-    return isEmpty(this.state.packages);
-  }
+  isTherePackages = () => this.state.packages.length > 0 
 
   render() {
     const { filteredPackages, packages } = this.state;
     return (
       <div className="container content">
-        {filteredPackages.length > 0 && (
-          <div className="container content">
-            <PackageList help={isEmpty(packages) === true} packages={packages} />
-          </div>
-        )}
+        <PackageList help={!packages.length > 0} packages={filteredPackages} />
       </div>
     );
   }

@@ -33,9 +33,7 @@ class Home extends Component {
     }
     return null;
   }
-
-  isTherePackages = () => this.state.packages.length > 0 
-
+  
   render() {
     const { filteredPackages, packages } = this.state;
     return (

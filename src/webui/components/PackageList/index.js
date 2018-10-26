@@ -54,9 +54,7 @@ export default class PackageList extends React.Component {
     return (
       <div className="package-list-items">
         <div className={classes.pkgContainer}>
-          {help ? (
-            <Help />
-          ) : this.renderPackges()}
+          {help ? <Help /> : this.renderPackges()}
         </div>
       </div>
     );

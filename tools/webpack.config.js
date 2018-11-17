@@ -56,11 +56,18 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
-        use: 'file-loader?name=[name].[ext]',
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+        ]
       },
       {
-        test: /\.(ttf|eot|woff|woff2|svg)$/,
+        test: /\.(ttf|eot|woff|woff2)$/,
         loader: 'url-loader',
         options: {
           limit: 50000,

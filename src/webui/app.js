@@ -11,7 +11,7 @@ import LoginModal from './components/Login';
 import Header from './components/Header';
 import { Container, Content } from './components/Layout';
 import Route from './router';
-import API from './utils/api';
+// import API from './utils/api';
 
 import './styles/main.scss';
 import 'normalize.css';
@@ -24,22 +24,22 @@ export default class App extends Component {
     scope: (window.VERDACCIO_SCOPE) ? `${window.VERDACCIO_SCOPE}:` : '',
     showLoginModal: false,
     isUserLoggedIn: false,
-    packages: [],
-    isLoading: true,
+    // packages: [],
+    // isLoading: true,
   }
 
   componentDidMount() {
     this.loadLogo();
     this.isUserAlreadyLoggedIn();
-    this.loadPackages();
+    // this.loadPackages();
   }
 
   // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(_, prevState) {
-    if (prevState.isUserLoggedIn !== this.state.isUserLoggedIn) {
-      this.loadPackages();
-    }
-  }
+  // componentDidUpdate(_, prevState) {
+  //   if (prevState.isUserLoggedIn !== this.state.isUserLoggedIn) {
+  //     this.loadPackages();
+  //   }
+  // }
 
   loadLogo = async () => {
     const logoUrl = await logo();
@@ -62,25 +62,25 @@ export default class App extends Component {
     }
   }
 
-  loadPackages = async () => {
-    try {
-      this.req = await API.request('packages', 'GET');
-      const transformedPackages = this.req.map(({ name, ...others}) => ({
-        label: name,
-        ...others
-      }));
-      this.setState({
-        packages: transformedPackages, 
-        isLoading: false
-      });
-    } catch (error) {
-      this.handleShowAlertDialog({
-        title: 'Warning',
-        message: `Unable to load package list: ${error.message}`
-      });
-      this.setLoading(false);
-    }
-  }
+  // loadPackages = async () => {
+  //   try {
+  //     this.req = await API.request('packages', 'GET');
+  //     const transformedPackages = this.req.map(({ name, ...others}) => ({
+  //       label: name,
+  //       ...others
+  //     }));
+  //     this.setState({
+  //       packages: transformedPackages, 
+  //       isLoading: false
+  //     });
+  //   } catch (error) {
+  //     this.handleShowAlertDialog({
+  //       title: 'Warning',
+  //       message: `Unable to load package list: ${error.message}`
+  //     });
+  //     this.setLoading(false);
+  //   }
+  // }
 
   setLoading = isLoading => (
     this.setState({
@@ -173,7 +173,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoading, isUserLoggedIn, packages } = this.state;
+    const { isLoading, isUserLoggedIn } = this.state;
     return (
       <Container isLoading={isLoading}>
         {isLoading ? (
@@ -182,7 +182,7 @@ export default class App extends Component {
           <Fragment>
             {this.renderHeader()}
             <Content>
-              <Route isUserLoggedIn={isUserLoggedIn} packages={packages} />
+              <Route isUserLoggedIn={isUserLoggedIn} />
             </Content>
             <Footer />
           </Fragment>
